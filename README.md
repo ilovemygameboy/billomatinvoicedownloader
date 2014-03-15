@@ -1,4 +1,4 @@
-Billomat Invoice Downloader
+Billomat Invoice Downloader (Work in Progress!)
 ================
 A missing feature in Billomat is to download an invoice in the overview of all invoices. This tool helps to do exactly that.
 
