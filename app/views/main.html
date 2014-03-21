@@ -1,0 +1,57 @@
+<div class="bs-header" id="content">
+   <div class="container">
+     <h1>Billomat Invoice Downloader</h1>
+     <p>This tool helps you to download Billomat invoices easy and fast. Currently this is a very slow process when using Billomat. <b>The best</b>: this is no server side coding like the solution from <a href="http://billomat.michaelplas.de/">Michael Plas</a> and it is free of charge.</p>
+     <p>Your data (API key & Billomat ID) is only stored on your client and can be deleted.</p>
+   </div>
+ </div>
+<label for="">API Key</label><br>
+<input type="text" class="icon_information" style="width: 300px" placeholder="insert your api key here" ng-model="apikey"> <br>
+<b>How to obtain the API key:</b> <br>
+Log into your acccount -> Click on your name (top right) -> check API access -> copy and paste the key
+<br>
+<br>
+<label for="">Billomat ID</label><br>
+<input type="text" class="icon_information" style="width: 300px" placeholder="insert your billomat id here" ng-model="billomatid"> 
+<a  style="float:right" ng-click="clearStorage()">Delete my data</a>
+<br><br>
+<button class="btn btn-info has-spinner" ng-class="{active: showSpinner}" ng-disabled="showSpinner" ng-click="makeRequest()">
+	<span class="spinner"><i class="icon-spin icon-refresh"></i></span>
+	Get all invoices
+</button>
+<br><br>
+<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+<div class="row marketing">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Invoice No.</th>
+				<th>Date</th>
+				<th>Customer</th>
+				<th>Price</th>
+				<th>Status</th>
+				<th>Download</th>
+				<th>Billomat</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="invoice in result.invoices.invoice" ng-class="{greyBG: invoice.status == 'CANCELED', danger: invoice.status == 'OVERDUE'}">
+				<td>{{$index+1}}</td>
+				<td>{{invoice.invoice_number }}</td>
+				<td>{{invoice.date | date:'mediumDate'}}</td>
+				<td>{{invoice.address | truncate:10}}</td>
+				<td>{{invoice.total_net | currency:invoice.currency_code}}</td>
+				<td>{{invoice.status}}</td>
+				<td><a href="{{invoice.downloadlink}}" type="application/octet-stream" download>Download</a></td>
+				<td><a href="{{invoice.billomatlink}}" type="application/octet-stream" target="_blank">Link</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<div ng-show="noData">
+		<p class="text-center bg-primary">
+			No data
+		</p>
+	</div>
+	<div ng-repeat="invoice in invoiceNumbers track by $index | orderBy:invoice ">{{invoice}}</div>
+</div>
