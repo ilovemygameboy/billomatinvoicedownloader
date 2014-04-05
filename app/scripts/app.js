@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('billomatRechnungsdownloaderApp', [
+angular.module('billomatInvoiceDownloader', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
@@ -8,7 +8,6 @@ angular.module('billomatRechnungsdownloaderApp', [
   'filters',
   'LocalStorageModule',
   'ui.bootstrap'
-
 ])
 .config(function ($routeProvider) {
   $routeProvider

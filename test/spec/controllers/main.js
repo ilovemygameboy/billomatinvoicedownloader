@@ -3,7 +3,9 @@
 describe('Controller: MainCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('billomatRechnungsdownloaderApp'));
+  beforeEach(module('billomatInvoiceDownloader'));
+
+//  beforeEach(module('LocalStorageModule'));
 
   var MainCtrl,
     scope;
