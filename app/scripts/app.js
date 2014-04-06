@@ -10,15 +10,15 @@ angular.module('billomatInvoiceDownloader', [
   'ui.bootstrap'
 ])
 .config(function ($routeProvider) {
-  $routeProvider
-    .when('/', {
-      templateUrl: 'views/main.html',
-      controller: 'MainCtrl'
-    })
-    .otherwise({
-      redirectTo: '/'
-    });
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
 })
-.config(['localStorageServiceProvider', function(localStorageServiceProvider){
-  localStorageServiceProvider.setPrefix('bs');
-}]);
+//.config(['localStorageServiceProvider', function(localStorageServiceProvider){
+//  localStorageServiceProvider.setPrefix('bs');
+//}]);

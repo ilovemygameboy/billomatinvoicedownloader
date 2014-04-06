@@ -1,7 +1,8 @@
 'use strict';
 angular.module('billomatInvoiceDownloader',[])
-  .controller('MainCtrl', function($scope, $http, localStorageService) {
-    
+//  .controller('MainCtrl', function($scope, $http, localStorageService) {
+  .controller('MainCtrl', function($scope, $http) {
+
     $scope.resource = 'invoices';
     $scope.total = 0;
     $scope.alerts = [];
@@ -17,20 +18,20 @@ angular.module('billomatInvoiceDownloader',[])
       'and more'
     ]
 
-    if(localStorageService.get('apikey')) {
-      $scope.apikey = localStorageService.get('apikey');
-    }
-    if(localStorageService.get('billomatid')) {
-      $scope.billomatid = localStorageService.get('billomatid');
-    }
-
-    $scope.$watch('apikey', function(newVal) {
-      localStorageService.add('apikey', newVal);
-    });
-
-    $scope.$watch('billomatid', function(newVal) {
-      localStorageService.add('billomatid', newVal);  
-    });
+//    if(localStorageService.get('apikey')) {
+//      $scope.apikey = localStorageService.get('apikey');
+//    }
+//    if(localStorageService.get('billomatid')) {
+//      $scope.billomatid = localStorageService.get('billomatid');
+//    }
+//
+//    $scope.$watch('apikey', function(newVal) {
+//      localStorageService.add('apikey', newVal);
+//    });
+//
+//    $scope.$watch('billomatid', function(newVal) {
+//      localStorageService.add('billomatid', newVal);
+//    });
 
     $scope.closeAlert = function(index) {
       $scope.alerts.splice(index, 1);
