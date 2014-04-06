@@ -1,5 +1,5 @@
 'use strict';
-angular.module('billomatInvoiceDownloader')
+angular.module('billomatInvoiceDownloader',[])
   .controller('MainCtrl', function($scope, $http, localStorageService) {
     
     $scope.resource = 'invoices';
