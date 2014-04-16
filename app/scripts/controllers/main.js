@@ -1,6 +1,5 @@
 'use strict';
-angular.module('billomatRechnungsdownloaderApp')
-  .controller('MainCtrl', function($scope, $http, localStorageService) {
+  app.controller('MainCtrl', function($scope, $http, localStorageService) {
     
     $scope.resource = 'invoices';
     $scope.total = 0;
