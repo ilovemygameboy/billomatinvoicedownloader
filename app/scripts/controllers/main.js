@@ -1,8 +1,6 @@
 'use strict';
-angular.module('billomatInvoiceDownloader',[])
-//  .controller('MainCtrl', function($scope, $http, localStorageService) {
-  .controller('MainCtrl', function($scope, $http) {
-
+  app.controller('MainCtrl', function($scope, $http, localStorageService) {
+    
     $scope.resource = 'invoices';
     $scope.total = 0;
     $scope.alerts = [];
@@ -11,27 +9,19 @@ angular.module('billomatInvoiceDownloader',[])
     $scope.noData = true;
     $scope.invoiceNumbers = [];
 
-    $scope.awesomeThings = [
-      'asdf',
-      'ölkj',
-      'qwert',
-      'and more'
-    ]
+    if(localStorageService.get('apikey')) {
+      $scope.apikey = localStorageService.get('apikey');
+    }
+    if(localStorageService.get('billomatid')) {
+      $scope.billomatid = localStorageService.get('billomatid');
+    }
 
-//    if(localStorageService.get('apikey')) {
-//      $scope.apikey = localStorageService.get('apikey');
-//    }
-//    if(localStorageService.get('billomatid')) {
-//      $scope.billomatid = localStorageService.get('billomatid');
-//    }
-//
-//    $scope.$watch('apikey', function(newVal) {
-//      localStorageService.add('apikey', newVal);
-//    });
-//
-//    $scope.$watch('billomatid', function(newVal) {
-//      localStorageService.add('billomatid', newVal);
-//    });
+    $scope.$watch('apikey', function(newVal) {
+      localStorageService.add('apikey', newVal);
+    });
+    $scope.$watch('billomatid', function(newVal) {
+      localStorageService.add('billomatid', newVal);  
+    });
 
     $scope.closeAlert = function(index) {
       $scope.alerts.splice(index, 1);
@@ -53,7 +43,7 @@ angular.module('billomatInvoiceDownloader',[])
         $scope.showSpinner = false;
         $scope.result = data;
         angular.forEach($scope.result.invoices.invoice, function(invoice) {
-          invoice.downloadlink = 'https://'+ $scope.billomatid +'.billomat.net/portal/files/document/elementId/'+ invoice.id +'/type/invoice/disposition/inline/Rechnung+' + invoice.invoice_number;
+          invoice.downloadlink = 'https://'+ $scope.billomatid +'.billomat.net/portal/files/document/elementId/'+ invoice.id +'/type/invoice/disposition/inline/Rechnung+' + invoice.invoice_number; //Rechnung+RE+130646.pdf
           invoice.billomatlink = 'https://'+ $scope.billomatid +'.billomat.net/portal/invoices/show/entityId/' + invoice.id;
           $scope.invoiceNumbers.push(invoice.invoice_number);
         });

@@ -9,6 +9,8 @@
 
 module.exports = function (grunt) {
 
+  grunt.loadNpmTasks('grunt-bower-install');
+
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
 
@@ -17,6 +19,18 @@ module.exports = function (grunt) {
 
   // Define the configuration for all the tasks
   grunt.initConfig({
+
+    bowerInstall: {
+
+      target: {
+
+        // Point to the files that should be updated when
+        // you run `grunt bower-install`
+        src: [
+          'app/index.html',   // .html support...
+        ]
+      }
+    },
 
     // Project settings
     yeoman: {

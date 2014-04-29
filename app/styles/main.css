@@ -112,4 +112,20 @@ body {
 .icon-refresh:before {
   content: url('../images/ajax-loader.gif');
 }
+
+.bg-green {
+    background-color: #98CE00;
+}
+
+.text-green {
+    color: #98CE00;
+}
+
+.text-white {
+    color: white;
+}
+
+.text-red {
+    color: #D0021B;
+}
 /*BS <<<*/

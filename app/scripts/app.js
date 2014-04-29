@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('billomatInvoiceDownloader', [
+var app = angular.module('billomatInvoiceDownloader', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
