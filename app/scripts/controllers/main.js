@@ -35,6 +35,14 @@ app.controller('MainCtrl', function($scope, $http, localStorageService) {
   };
 
   $scope.makeRequest = function() {
+    if (!$scope.apikey || !$scope.billomatid) {
+      $scope.alerts.push({
+        type: 'warning',
+        msg: 'There was an error. Please check your Billomat ID and API key'
+      });
+      return;
+    }
+
     $scope.showSpinner = true;
     $scope.result = null;
     $scope.alerts = [];
