@@ -1,7 +1,7 @@
 Billomat Invoice Downloader
 ================
 
-![Billomat Invoice Downloader Logo](https://github.com/ilovemygameboy/billomatinvoicedownloader/blob/master/app/images/logo.png "Billomat Invoice Downloader Logo")
+![Billomat Invoice Downloader Logo](http://billomat.sinther.net/images/logo.png "Billomat Invoice Downloader Logo")
 
 A missing feature in Billomat is to download an invoice in the overview of all invoices. This tool helps to do exactly that.
 
@@ -11,5 +11,5 @@ It is based on yeoman, AngularJS and Twitter Bootstrap. Project scaffolding was 
 `yo angular` [https://github.com/yeoman/generator-angular](https://github.com/yeoman/generator-angular).
 
 ### Build
-To build the project open a Terminal and typ
+To build the project open a Terminal and type
 `grunt build`
