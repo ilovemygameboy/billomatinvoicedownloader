@@ -41,6 +41,9 @@
         <br>
         <input type="text" class="icon_information" style="width: 300px" placeholder="insert your api key here" ng-model="apikey">
       </div>
+      <div class="visible-xs">
+        <br>
+      </div>
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <label for="">Billomat ID</label>
         <span tooltip-html-unsafe="<b>Where do I find my Billomat ID? </b>
@@ -73,8 +76,8 @@
       <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
 
       <!-- Invoice Table -->
-      <div class="row marketing">
-      <table class="table table-hover hidden-xs">
+      <div class="row marketing hidden-xs">
+      <table class="table table-hover">
         <thead>
           <tr>
             <th>#</th>
@@ -102,7 +105,8 @@
           </tr>
         </tbody>
       </table>
-
+    </div>
+    <div class="row marketing">
       <!-- Mobile Invoice Table -->
       <table class="table table-hover visible-xs">
         <thead>
