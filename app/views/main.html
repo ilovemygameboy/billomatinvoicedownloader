@@ -1,10 +1,10 @@
 <div>
   <br>
   <div class="row">
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
       <img width="150" src="./images/logo.png" alt="">
     </div>
-    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
       <h2 class="text-darkgrey">Billomat Invoice Downloader</h2>
       <br>
       <h4 class="text-darkgrey">A simple utility to download invoices from <a href="http://billomat.com">Billomat</a>.</h4>
@@ -13,7 +13,7 @@
   <!-- END row -->
 
   <div class="row">
-    <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <br>This utility helps you to download Billomat invoices easy and fast. Currently this is a very slow process when using Billomat. It is free of charge, your data (API key & Billomat ID) is only stored on your client and can be deleted.
     </div>
   </div>
@@ -22,12 +22,12 @@
   <!-- Content -->
   <form>
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <!-- Input -->
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-          <label for="">API Key</label>
-          <span tooltip-html-unsafe="
+      <!-- Input -->
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <label for="">API Key</label>
+        <span tooltip-html-unsafe="
           <b>Where do I find my API key?</b> 
+          <br>
           <br>
           <ol>
             <li>Log into your Billomat account</li>
@@ -35,21 +35,21 @@
             <li>check API access</li>
             <li>copy and paste the key</li>
           </ol>">
-            <img class="bs-tooltip-icon" src="./images/tooltip.png" width="13" alt="">
+          <img class="bs-tooltip-icon" src="./images/tooltip.png" width="13" alt="">
 
-          </span>
-          <br>
-          <input type="text" class="icon_information" style="width: 300px" placeholder="insert your api key here" ng-model="apikey">
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-          <label for="">Billomat ID</label>
-          <span tooltip-html-unsafe="<b>Where do I find my Billomat ID? </b>
-              When you are logged in to your Billomat account you will see the ID as part of the URL e.g. 'superdupercompany.billomat.net'. In this example your ID would be 'supderdupercompany'.">
-            <img class="bs-tooltip-icon" src="./images/tooltip.png" width="13" alt="">
-          </span>
-          <br>
-          <input type="text" class="icon_information" style="width: 300px" placeholder="insert your billomat id here" ng-model="billomatid">
-        </div>
+        </span>
+        <br>
+        <input type="text" class="icon_information" style="width: 300px" placeholder="insert your api key here" ng-model="apikey">
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <label for="">Billomat ID</label>
+        <span tooltip-html-unsafe="<b>Where do I find my Billomat ID? </b>
+            <br><br>
+              When you are logged in to your Billomat account you will see the ID as part of the URL e.g. 'superdupercompany.billomat.net'. <br><br> In this example your ID would be 'supderdupercompany'.">
+          <img class="bs-tooltip-icon" src="./images/tooltip.png" width="13" alt="">
+        </span>
+        <br>
+        <input type="text" class="icon_information" style="width: 300px" placeholder="insert your billomat id here" ng-model="billomatid">
       </div>
     </div>
     <!-- END row -->
@@ -74,46 +74,70 @@
 
       <!-- Invoice Table -->
       <div class="row marketing">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Invoice No.</th>
-              <th>Date</th>
-              <th>Customer</th>
-              <th>Price</th>
-              <th>Status</th>
-              <th>Download</th>
-              <th>Billomat</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="invoice in result.invoices.invoice" ng-class="{greyBG: invoice.status == 'CANCELED', danger: invoice.status == 'OVERDUE'}">
-              <td>{{$index+1}}</td>
-              <td>{{invoice.invoice_number }}</td>
-              <td>{{invoice.date | date:'mediumDate'}}</td>
-              <td>{{invoice.address | truncate:10}}</td>
-              <td>{{invoice.total_net | currency:invoice.currency_code}}</td>
-              <td>{{invoice.status}}</td>
-              <td><a href="{{invoice.downloadlink}}" type="application/octet-stream" download>Download</a>
-              </td>
-              <td><a href="{{invoice.billomatlink}}" type="application/octet-stream" target="_blank">Link</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <div ng-show="noData">
-          <p class="text-center text-green">
-            No data
-          </p>
-        </div>
-        <!--<div ng-repeat="invoice in invoiceNumbers track by $index | orderBy:invoice ">{{invoice}}</div>-->
+      <table class="table table-hover hidden-xs">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Invoice No.</th>
+            <th>Date</th>
+            <th>Customer</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Download</th>
+            <th>Billomat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="invoice in result.invoices.invoice" ng-class="{greyBG: invoice.status == 'CANCELED', danger: invoice.status == 'OVERDUE'}">
+            <td>{{$index+1}}</td>
+            <td>{{invoice.invoice_number }}</td>
+            <td>{{invoice.date | date:'mediumDate'}}</td>
+            <td>{{invoice.address | truncate:10}}</td>
+            <td>{{invoice.total_net | currency:invoice.currency_code}}</td>
+            <td>{{invoice.status}}</td>
+            <td><a href="{{invoice.downloadlink}}" type="application/octet-stream" download>Download</a>
+            </td>
+            <td><a href="{{invoice.billomatlink}}" type="application/octet-stream" target="_blank">Link</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Mobile Invoice Table -->
+      <table class="table table-hover visible-xs">
+        <thead>
+          <tr>
+            <th>Invoice No.</th>
+            <th>Date</th>
+            <th>Customer</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="invoice in result.invoices.invoice" ng-class="{greyBG: invoice.status == 'CANCELED', danger: invoice.status == 'OVERDUE'}">
+            <td>{{invoice.invoice_number }}</td>
+            <td>{{invoice.date | date:'mediumDate'}}</td>
+            <td>{{invoice.address | truncate:10}}</td>
+            <td>{{invoice.total_net | currency:invoice.currency_code}}</td>
+            <td>{{invoice.status}}</td>
+            <td><a href="{{invoice.downloadlink}}" type="application/octet-stream" download>Download</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div ng-show="noData">
+        <p class="text-center text-green">
+          No data
+        </p>
+      </div>
       </div>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-darkgrey ">
+    <div class="col-xs-6 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-darkgrey ">
       <br>
       <br>If you wish to delete your local data
       <a class="text-red" ng-click="clearStorage()">click here.</a>
@@ -131,7 +155,7 @@
         </a>in 2014.
       </p>
     </div>
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-darkgrey">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-darkgrey">
       <p class="text-center">You want to support the Billomat Invoice Downloader? Make a donation.
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="paypal-donate">
           <input type="hidden" name="cmd" value="_s-xclick">

@@ -6128,6 +6128,7 @@ button.close {
   opacity: 0;
   filter: alpha(opacity=0);
   visibility: visible;
+  padding:; 10px;
 }
 
 /*.tooltip.in {
@@ -6158,10 +6159,10 @@ button.close {
 .tooltip-inner {
   max-width: 200px;
   padding: 3px 8px;
-  color: #333;
+  color: white;
   text-align: left;
   text-decoration: none;
-  background: #77c9e4;
+  background: rgba(119,201,228,.95);
   /*background: -moz-linear-gradient(-45deg, #77c9e4 0%, #b8e986 100%);
   background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #77c9e4), color-stop(100%, #b8e986));
   background: -webkit-linear-gradient(-45deg, #77c9e4 0%, #b8e986 100%);
@@ -6170,6 +6171,7 @@ button.close {
   background: linear-gradient(135deg, #77c9e4 0%, #b8e986 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#77c9e4', endColorstr='#b8e986', GradientType=1);*/
   border-radius: 4px;
+  padding-5px;
 }
 
 .tooltip-arrow {
@@ -6184,7 +6186,7 @@ button.close {
   bottom: 0;
   left: 50%;
   margin-left: -5px;
-  border-top-color: #000000;
+  border-top-color: rgba(119,201,228,.95);
   border-width: 5px 5px 0;
 }
 
