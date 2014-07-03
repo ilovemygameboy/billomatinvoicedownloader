@@ -1,65 +1,73 @@
-<!-- Header -->
 <div>
   <br>
-  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-    <img width="150" src="./images/logo.png" alt="">
+  <div class="row">
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+      <img width="150" src="./images/logo.png" alt="">
+    </div>
+    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+      <h2 class="text-darkgrey">Billomat Invoice Downloader</h2>
+      <br>
+      <h4 class="text-darkgrey">A simple utility to download invoices from <a href="http://billomat.com">Billomat</a>.</h4>
+    </div>
   </div>
-  <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-    <h2 class="text-darkgrey">Billomat Invoice Downloader</h2>
-    <br>
-    <h4 class="text-darkgrey">A simple utility to download invoices from <a href="http://billomat.com">Billomat</a>.</h4>
-  </div>
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <br>This utility helps you to download Billomat invoices easy and fast. Currently this is a very slow process when using Billomat. It is free of charge, your data (API key & Billomat ID) is only stored on your client and can be deleted.
-  </div>
+  <!-- END row -->
 
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+      <br>This utility helps you to download Billomat invoices easy and fast. Currently this is a very slow process when using Billomat. It is free of charge, your data (API key & Billomat ID) is only stored on your client and can be deleted.
+    </div>
+  </div>
+  <!-- END row -->
+  <br>
   <!-- Content -->
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+  <form>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <!-- Input -->
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <label for="">API Key</label>
+          <span tooltip-html-unsafe="
+          <b>Where do I find my API key?</b> 
+          <br>
+          <ol>
+            <li>Log into your Billomat account</li>
+            <li>click on your name (top right)</li>
+            <li>check API access</li>
+            <li>copy and paste the key</li>
+          </ol>">
+            <img class="bs-tooltip-icon" src="./images/tooltip.png" width="13" alt="">
+
+          </span>
+          <br>
+          <input type="text" class="icon_information" style="width: 300px" placeholder="insert your api key here" ng-model="apikey">
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+          <label for="">Billomat ID</label>
+          <span tooltip-html-unsafe="<b>Where do I find my Billomat ID? </b>
+              When you are logged in to your Billomat account you will see the ID as part of the URL e.g. 'superdupercompany.billomat.net'. In this example your ID would be 'supderdupercompany'.">
+            <img class="bs-tooltip-icon" src="./images/tooltip.png" width="13" alt="">
+          </span>
+          <br>
+          <input type="text" class="icon_information" style="width: 300px" placeholder="insert your billomat id here" ng-model="billomatid">
+        </div>
+      </div>
+    </div>
+    <!-- END row -->
+    <!-- END Content -->
     <br>
-    <br>
-    <!-- Input -->
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-      <label for="">API Key</label>
-      <br>
-      <input type="text" class="icon_information" style="width: 300px" placeholder="insert your api key here" ng-model="apikey">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <br>
+        <button class="btn bg-green has-spinner center-block" ng-class="{active: showSpinner}" ng-disabled="showSpinner" ng-click="makeRequest()">
+          <span class="spinner"><i class="icon-spin icon-refresh"></i>
+          </span>
+          <span class="text-white">Get all invoices</span>
+        </button>
+      </div>
     </div>
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-darkgrey">
-      <b>Where do I find my API key?</b> 
-      <br>
-      <ol>
-        <li>Log into your Billomat account</li>
-        <li>click on your name (top right)</li>
-        <li>check API access</li>
-        <li>copy and paste the key</li>
-      </ol>
-    </div>
+  </form>
 
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-      <label for="">Billomat ID</label>
-      <br>
-      <input type="text" class="icon_information" style="width: 300px" placeholder="insert your billomat id here" ng-model="billomatid">
-    </div>
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-darkgrey">
-      <b>Where do I find my Billomat ID?</b> 
-      <br>When you are logged in to your Billomat account you will see the ID as part of the URL e.g. "superdupercompany.billomat.net". In this example your ID would be "supderdupercompany".
-    </div>
-
-    <div class="col-xs-6 col-xs-offset-6 col-sm-6 col-sm-offset-6 col-md-6 col-md-offset-6 col-lg-6 col-lg-offset-6 text-darkgrey">
-      <br>
-      <b>Data Deletion</b>
-      <br>If you wish to delete your local data
-      <a class="text-red" ng-click="clearStorage()">click here.</a>
-    </div>
-
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <br>
-      <button class="btn bg-green has-spinner center-block" ng-class="{active: showSpinner}" ng-disabled="showSpinner" ng-click="makeRequest()">
-        <span class="spinner"><i class="icon-spin icon-refresh"></i>
-        </span>
-        <span class="text-white">Get all invoices</span>
-      </button>
-    </div>
-
+  <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <!-- Errors, if any -->
       <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
@@ -102,9 +110,25 @@
         <!--<div ng-repeat="invoice in invoiceNumbers track by $index | orderBy:invoice ">{{invoice}}</div>-->
       </div>
     </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3 text-darkgrey ">
+      <br>
+      <br>If you wish to delete your local data
+      <a class="text-red" ng-click="clearStorage()">click here.</a>
+    </div>
+  </div>
+  <br>
+  <br>
+  <!-- row -->
+  <div class="row">
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-darkgrey">
       <p class="text-center">
-        This utility has been developed by <a href="http://sinther.net" target="_blank">Ben Sinther</a> from <a href="http://naisone.de" target="_blank"><img class="naisone" src="./images/naisone.jpg" width="70"/></a> in 2014.
+        This utility has been developed by <a href="http://sinther.net" target="_blank">Ben Sinther</a> from
+        <a href="http://naisone.de" target="_blank">
+          <img class="naisone" src="./images/naisone.jpg" width="70" />
+        </a>in 2014.
       </p>
     </div>
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-darkgrey">
@@ -118,6 +142,8 @@
       </p>
     </div>
   </div>
-  <!-- end content -->
+  <!-- row -->
 </div>
-<!-- end header -->
+<!-- end content -->
+</div>
+<!-- end header

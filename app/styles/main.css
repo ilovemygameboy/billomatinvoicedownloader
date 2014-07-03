@@ -79,12 +79,12 @@
  .page {
    /*background: url(../images/tile.png) 0 0 transparent repeat;*/
    background: #77c9e4;
-   background: -moz-linear-gradient(-45deg, #77c9e4 0%, #b8e986 100%);
+   background: -moz-linear-gradient(-90deg, #77c9e4 0%, #b8e986 100%);
    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #77c9e4), color-stop(100%, #b8e986));
-   background: -webkit-linear-gradient(-45deg, #77c9e4 0%, #b8e986 100%);
-   background: -o-linear-gradient(-45deg, #77c9e4 0%, #b8e986 100%);
-   background: -ms-linear-gradient(-45deg, #77c9e4 0%, #b8e986 100%);
-   background: linear-gradient(135deg, #77c9e4 0%, #b8e986 100%);
+   background: -webkit-linear-gradient(-90deg, #77c9e4 0%, #b8e986 100%);
+   background: -o-linear-gradient(-90deg, #77c9e4 0%, #b8e986 100%);
+   background: -ms-linear-gradient(-90deg, #77c9e4 0%, #b8e986 100%);
+   background: linear-gradient(90deg, #77c9e4 0%, #b8e986 100%);
    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#77c9e4', endColorstr='#b8e986', GradientType=1);
  }
  .fly {
@@ -125,7 +125,6 @@
  .paypal-donate {
    margin-left: 110px;
  }
-
  .bg-green {
    background-color: #87D40F;
  }
@@ -179,5 +178,9 @@
    margin-top: -6px;
    margin-left: 2px;
    margin-right: 2px;
+ }
+ .bs-tooltip-icon {
+   margin-top: -3px;
+   margin-left: 4px;
  }
  /*BS <<<
